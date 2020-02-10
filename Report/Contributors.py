@@ -14,7 +14,7 @@ def get_full_name(username):
         return str(r['name'])
     except Exception as e:
         print(e)
-        return "NULL"
+        return None
 
 def get_contributors(org_name, project_name, nameRequired=False):
     contributors_usernames = list()
