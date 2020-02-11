@@ -9,7 +9,7 @@ headers = {
 
 def get_full_name(username):
     url = "https://api.github.com/users/"+username
-    r=requests.get(url, headers=headers, proxies=config.PROXY).json()
+    r=requests.get(url, headers=headers).json()
     try:
         return str(r['name'])
     except Exception as e:
@@ -21,7 +21,7 @@ def get_contributors(org_name, project_name, nameRequired=False):
     page_count = 1
     while True:
         url = "https://api.github.com/repos/"+org_name+'/'+project_name+"/contributors?page="+str(page_count)
-        contributors = r=requests.get(url,headers=headers, proxies=config.PROXY)
+        contributors = r=requests.get(url,headers=headers)
         if contributors != None and contributors.status_code == 200 and len(contributors.json()) > 0:
             contributors_usernames = contributors_usernames + contributors.json()
             break

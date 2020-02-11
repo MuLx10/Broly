@@ -102,7 +102,7 @@ class ContributionReport(object):
         If the query returns paginated results,
         this function recursively fetchs all the results, concatenate and return.
         """
-        r = requests.get(query, params=params, headers=headers, proxies=config.PROXY)
+        r = requests.get(query, params=params, headers=headers )
         if not r.ok:
             raise(Exception("Error in fetch_all_pages", "query : ", query, "r.json() ", r.json()))
         link = r.headers.get('link', None)
@@ -122,7 +122,7 @@ class ContributionReport(object):
 
     def fetch_all_pull_requests(self,query, since=None, headers=None):
         query = query.lstrip('<')
-        r = requests.get(query, headers=headers, proxies=config.PROXY)
+        r = requests.get(query, headers=headers )
         link = r.headers.get('link', None)
         if link is None:
             return r.json()
@@ -163,7 +163,7 @@ class ContributionReport(object):
                     message = commit['commit']['message']
 
                     _api_url_commit = commit['url']
-                    r = requests.get(_api_url_commit, headers=headers, proxies=config.PROXY)
+                    r = requests.get(_api_url_commit, headers=headers )
                     if not r.ok:
                         raise(Exception("Error in fetching commit info", "query : ", _api_url_commit, "r.json() ", r.json()))
                     _commit_info = r.json()
