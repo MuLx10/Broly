@@ -13,7 +13,7 @@ headers = {
     'Authorization': 'token ' + config.GH_API_KEY
 }
 
-languages_json = json.load(open("languages.json", 'r'))
+languages_json = json.load(open("files/languages.json", 'r'))
 
 class ContributionReport(object):
     """docstring for ContributionReport"""
@@ -82,10 +82,10 @@ class ContributionReport(object):
         else:
             self.projects.append(self.org_name+'/'+projects) 
 
-    def add_user(self,user,name):
+    def add_user(self,user,name = None, avatar_url = ''):
         self.usernames.add(user)
         self.stats[user] = dict()
-        self.stats[user]['avatar_url'] = ''
+        self.stats[user]['avatar_url'] = avatar_url
         self.stats[user]['name'] = name
         self.stats[user]['projects'] = set()
         self.stats[user]['no_of_commits'] = 0
@@ -230,27 +230,38 @@ class ContributionReport(object):
             copy_stats[user]['projects'] = list(copy_stats[user]['projects'])
             copy_stats[user]['languages'] = list(copy_stats[user]['languages'])
         return copy_stats
-
-    def get_stats(self,user):
+        
+    def get_stats(self,user = None):
+        if user is None:
+            return self.stats
         return self.stats.get(user, None)
-
-
-if __name__ == '__main__':
-    org_name = 'mattermost'
-    projects = ['mattermost-mobile', 'mattermost-server']
+        
+        
+import Report.Contributors      
+def main(org_name, projects, dT = 7):
+    users = {}
+    for project_name in projects:
+        users[project_name] = Report.Contributors.get_contributors(org_name, project_name, True)
+    #print(users)
     
     T = datetime.date.today()
-    dT = datetime.timedelta(days=7)
+    dT = datetime.timedelta(days=dT)
     
     since = str(T-dT).split(' ')[0]+'T00:00:00Z'
     until = str(T).split(' ')[0]+'T00:00:00Z'
     
-    user = 'enahum'
-    name = 'Elias Nahum'
-
     ghs = ContributionReport(org_name = org_name)
     ghs.add_project(projects = projects)
-    ghs.add_user(user = user,name = name)
-    ghs.run(since,until)
+    for project_name in projects:
+        for user, name, avatar_url in users[project_name]:
+            ghs.add_user(user = user, name = name, avatar_url = avatar_url)
+        
+    ghs.run(since, until)
+    return ghs.get_stats()
 
-    print(ghs.get_stats(user))
+
+if __name__ == '__main__':
+    org_name = 'mattermost'
+    projects = ['mattermost-mobile']
+    main(org_name, projects)
+    
