@@ -3,6 +3,7 @@ import copy
 import requests
 import Channel
 import Report.ContributionReport
+import Social.Meme
 
 class BrolyBot(object):
     """docstring for BrolyBot"""
@@ -28,8 +29,11 @@ class BrolyBot(object):
     def get_report(self, org_name, projects):
         return Report.ContributionReport.main(org_name, projects)   
        
-    def get_social(self):
-        pass
+    def get_social(self, type, contents = None):
+        if type == 'tod':
+            pass
+        if type == 'meme':
+            return Social.Meme.main(channel = contents['channel'], limit = contents['limit'])
                      
     def productivity_init(self):
         pass
@@ -38,34 +42,31 @@ class BrolyBot(object):
         pass
         
     def post_report(self, report):
-        contributors = list(report.keys())
-        attrb = ['avatar_url', 'no_of_commits','pr_open','pr_closed', 'lines_added', 'lines_removed']
-        
-        final_report = []
-        for contributor in contributors:
-            temp = [contributor]
-            for a in attrb:
-                temp.append(report[contributor][a])
-            final_report.append(temp)
-        
-        final_report = sorted(final_report, key = lambda x: sum(x[2:5]), reverse = True)[:5]
         message = "## Weekly Report\n"
-        
-        for r in final_report:
-            message += ">![img]("+str(r[1])[2:-1]+'&s=40)\n'
+        for r in report:
+            #message += "<img src='"+str(r[1])[2:-1]+"' width='40' height='40'>\n\n"
+            message += ">![img]("+str(r[1])[2:-1]+"&s=40)\n"
             message += ">**"+str(r[0])+"**\n"
             message += ">Commits:"+str(r[2])+'\n'
             message += ">PR Open: "+str(r[3])+", PR Closed:"+str(r[4])+'\n'
-            message += '\n\n'
-            
-            
+            message += '\n'
         print(message)
-        #print(final_report)
+        #print(report)
         self.channel.add_post(self.report_channel_id, message, self.headers)
     
-    def post_social(self):
-        message = "**![dffd](https://avatars0.githubusercontent.com/u/23444642?s=40&v=4)**"
-        self.channel.add_post(self.social_channel_id, message, self.headers)
+    def post_social(self, type, contents):
+        
+        if type == 'tod':
+            pass
+        if type == 'meme':
+            (image_urls, image_titles, image_ids) = contents
+            for url, title, _ in zip(image_urls, image_titles, image_ids):
+                message = ''
+                message += "## "+str(title)[2:-1]+"**\n"
+                message += "![img]("+str(url)[2:-1]+")\n"
+                message += '\n'
+                print(message)
+                self.channel.add_post(self.social_channel_id, message, self.headers)
        
     def post_workflow(self):
         pass
@@ -76,6 +77,7 @@ class BrolyBot(object):
 
 if __name__ == "__main__":
     bot = BrolyBot(team_id = "satzcatq1prftgtfz6c9m5x9my", token = config.BOT_API_KEY)
-    report = bot.get_report('mattermost', ['mattermost-mobile'])
-    bot.post_report(report)
-    bot.post_social()
+    #report = bot.get_report('mattermost', ['mattermost-mobile'])
+    #bot.post_report(report)
+    memes = bot.get_social('meme', {'channel':'ProgrammerHumor', 'limit':10})
+    bot.post_social('meme', memes )

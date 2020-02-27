@@ -257,7 +257,19 @@ def main(org_name, projects, dT = 7):
             ghs.add_user(user = user, name = name, avatar_url = avatar_url)
         
     ghs.run(since, until)
-    return ghs.get_stats()
+    report = ghs.get_stats()
+    contributors = list(report.keys())
+    attrb = ['avatar_url', 'no_of_commits','pr_open','pr_closed', 'lines_added', 'lines_removed']
+    
+    final_report = []
+    for contributor in contributors:
+        temp = [contributor]
+        for a in attrb:
+            temp.append(report[contributor][a])
+        final_report.append(temp)
+    
+    final_report = sorted(final_report, key = lambda x: sum(x[2:5]), reverse = True)[:10]
+    return final_report
 
 
 if __name__ == '__main__':
