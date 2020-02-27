@@ -1,9 +1,10 @@
-import config
+import re
 import copy
 import requests
+import config
 import Channel
 import Report.ContributionReport
-import Social.Meme
+import Social.RedditScrapper
 
 class BrolyBot(object):
     """docstring for BrolyBot"""
@@ -30,10 +31,7 @@ class BrolyBot(object):
         return Report.ContributionReport.main(org_name, projects)   
        
     def get_social(self, type, contents = None):
-        if type == 'tod':
-            pass
-        if type == 'meme':
-            return Social.Meme.main(channel = contents['channel'], limit = contents['limit'])
+        return Social.RedditScrapper.main(type, channel = contents['channel'], limit = contents['limit'])
                      
     def productivity_init(self):
         pass
@@ -46,7 +44,7 @@ class BrolyBot(object):
         for r in report:
             #message += "<img src='"+str(r[1])[2:-1]+"' width='40' height='40'>\n\n"
             message += ">![img]("+str(r[1])[2:-1]+"&s=40)\n"
-            message += ">**"+str(r[0])+"**\n"
+            message += ">**"+str(r[0])+" **\n"
             message += ">Commits:"+str(r[2])+'\n'
             message += ">PR Open: "+str(r[3])+", PR Closed:"+str(r[4])+'\n'
             message += '\n'
@@ -55,18 +53,18 @@ class BrolyBot(object):
         self.channel.add_post(self.report_channel_id, message, self.headers)
     
     def post_social(self, type, contents):
-        
-        if type == 'tod':
-            pass
-        if type == 'meme':
-            (image_urls, image_titles, image_ids) = contents
-            for url, title, _ in zip(image_urls, image_titles, image_ids):
-                message = ''
-                message += "## "+str(title)[2:-1]+"**\n"
+        (image_urls, image_titles, image_ids) = contents
+        print(contents)
+        for url, title, _ in zip(image_urls, image_titles, image_ids):
+            message = ''
+            if type == 'tod':
+                message += '## Thoughts ?\n#'
+            message += "## "+str(title)[2:-1]+'\n'
+            if type == 'meme':
                 message += "![img]("+str(url)[2:-1]+")\n"
-                message += '\n'
-                print(message)
-                self.channel.add_post(self.social_channel_id, message, self.headers)
+            message += '\n'
+            print(message)
+            self.channel.add_post(self.social_channel_id, message, self.headers)
        
     def post_workflow(self):
         pass
@@ -77,7 +75,11 @@ class BrolyBot(object):
 
 if __name__ == "__main__":
     bot = BrolyBot(team_id = "satzcatq1prftgtfz6c9m5x9my", token = config.BOT_API_KEY)
-    report = bot.get_report('mattermost', ['mattermost-mobile'])
-    bot.post_report(report)
+    #report = bot.get_report('mattermost', ['mattermost-mobile'])
+    #bot.post_report(report)
+    
     memes = bot.get_social('meme', {'channel':'ProgrammerHumor', 'limit':10})
     bot.post_social('meme', memes )
+    
+    tod = bot.get_social('tod', {'channel':'Showerthoughts', 'limit':1})
+    bot.post_social('tod', tod )
