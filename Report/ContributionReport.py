@@ -268,7 +268,7 @@ def main(org_name, projects, dT = 7):
             temp.append(report[contributor][a])
         final_report.append(temp)
     
-    final_report = sorted(final_report, key = lambda x: sum(x[2:5]), reverse = True)[:10]
+    final_report = sorted(final_report, key = lambda x: sum(x[2:]), reverse = True)[:5]
     return final_report
 
 

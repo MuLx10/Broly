@@ -4,7 +4,7 @@ import requests
 import config
 import Channel
 import Report.ContributionReport
-import Social.RedditScrapper
+import Social.RedditScrapper, Social.Horoscope
 
 class BrolyBot(object):
     """docstring for BrolyBot"""
@@ -31,6 +31,8 @@ class BrolyBot(object):
         return Report.ContributionReport.main(org_name, projects)   
        
     def get_social(self, type, contents = None):
+        if type == 'horo':
+            return Social.Horoscope.main()
         return Social.RedditScrapper.main(type, channel = contents['channel'], limit = contents['limit'])
                      
     def productivity_init(self):
@@ -43,10 +45,11 @@ class BrolyBot(object):
         message = "## Weekly Report\n"
         for r in report:
             #message += "<img src='"+str(r[1])[2:-1]+"' width='40' height='40'>\n\n"
-            message += ">![img]("+str(r[1])[2:-1]+"&s=40)\n"
+            message += ">![img]("+str(r[1])[2:-1]+"&s=100)\n"
             message += ">**"+str(r[0])+" **\n"
             message += ">Commits:"+str(r[2])+'\n'
             message += ">PR Open: "+str(r[3])+", PR Closed:"+str(r[4])+'\n'
+            message += ">Lines Added: "+str(r[5])+", Lines Added:"+str(r[6])+'\n'
             message += '\n'
         print(message)
         #print(report)
@@ -58,10 +61,12 @@ class BrolyBot(object):
         for url, title, _ in zip(image_urls, image_titles, image_ids):
             message = ''
             if type == 'tod':
-                message += '## Thoughts ?\n#'
-            message += "## "+str(title)[2:-1]+'\n'
-            if type == 'meme':
-                message += "![img]("+str(url)[2:-1]+")\n"
+                message += '## Thoughts ?\n'
+            elif type == 'meme':
+                message += "## "
+            message += title+'\n'
+            if not (type == 'tod'):
+                message += "![img]("+url+")\n"
             message += '\n'
             print(message)
             self.channel.add_post(self.social_channel_id, message, self.headers)
@@ -75,11 +80,14 @@ class BrolyBot(object):
 
 if __name__ == "__main__":
     bot = BrolyBot(team_id = "satzcatq1prftgtfz6c9m5x9my", token = config.BOT_API_KEY)
-    #report = bot.get_report('mattermost', ['mattermost-mobile'])
-    #bot.post_report(report)
+    report = bot.get_report('mattermost', ['mattermost-mobile'])
+    bot.post_report(report)
     
     memes = bot.get_social('meme', {'channel':'ProgrammerHumor', 'limit':10})
     bot.post_social('meme', memes )
     
     tod = bot.get_social('tod', {'channel':'Showerthoughts', 'limit':1})
     bot.post_social('tod', tod )
+    
+    horo = bot.get_social('horo', {})
+    bot.post_social('horo', horo )

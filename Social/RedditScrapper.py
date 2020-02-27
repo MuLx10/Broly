@@ -18,8 +18,8 @@ class RedditScrapper(object):
         image_urls, image_titles, image_ids = [], [], []
 
         for post in posts:
-          image_urls.append(post.url.encode('utf-8').decode("utf-8").encode("ascii", "ignore"))
-          image_titles.append(post.title.encode('utf-8').decode("utf-8").encode("ascii", "ignore"))
+          image_urls.append(str(post.url.encode('utf-8').decode("utf-8").encode("ascii", "ignore"))[2:-1])
+          image_titles.append(str(post.title.encode('utf-8').decode("utf-8").encode("ascii", "ignore"))[2:-1])
           image_ids.append(post.id)
   
         return (image_urls, image_titles, image_ids)
