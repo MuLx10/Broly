@@ -77,7 +77,7 @@ class BrolyBot(object):
 
 if __name__ == "__main__":
     bot = BrolyBot(team_id = "satzcatq1prftgtfz6c9m5x9my", token = config.BOT_API_KEY)
-    #report = bot.get_report('mattermost', ['mattermost-mobile'])
-    #bot.post_report(report)
+    report = bot.get_report('mattermost', ['mattermost-mobile'])
+    bot.post_report(report)
     memes = bot.get_social('meme', {'channel':'ProgrammerHumor', 'limit':10})
     bot.post_social('meme', memes )
