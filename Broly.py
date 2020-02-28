@@ -87,6 +87,7 @@ class BrolyBot(object):
                 message += "\n**Reviewers: **"
                 message += ', '.join(['_'+rr+'_' for rr in prs[pr_no]['requested_reviewers']])
                 message += '\n\n'
+            print(message)
             self.channel.add_post(self.report_channel_id, message, self.headers)
             message = ""
     def post_workflow(self):
