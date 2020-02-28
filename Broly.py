@@ -93,7 +93,7 @@ class BrolyBot(object):
         pass
 
 if __name__ == "__main__":
-    bot = BrolyBot(team_id = "satzcatq1prftgtfz6c9m5x9my", token = config.BOT_API_KEY)
+    bot = BrolyBot(team_id = config.TEAM_ID, token = config.BOT_API_KEY)
     
     report = bot.get_report('mattermost', ['mattermost-mobile'])
     bot.post_report(report)
