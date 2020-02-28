@@ -5,6 +5,8 @@ import config
 import Channel
 import Report.ContributionReport
 import Social.RedditScrapper, Social.Horoscope
+import Productivity.Productivity
+
 
 class BrolyBot(object):
     """docstring for BrolyBot"""
@@ -35,8 +37,8 @@ class BrolyBot(object):
             return Social.Horoscope.main()
         return Social.RedditScrapper.main(type, channel = contents['channel'], limit = contents['limit'])
                      
-    def productivity_init(self):
-        pass
+    def get_pr_stats(self, org_name, projects):
+        return Productivity.Productivity.main(org_name, projects)
     
     def workflow_init(self):
         pass
@@ -70,16 +72,29 @@ class BrolyBot(object):
             message += '\n'
             print(message)
             self.channel.add_post(self.social_channel_id, message, self.headers)
+    
+    def post_productivity(self, stats):
+        message = "# PR Status\n"
        
+        for project in list(stats.keys()):
+            prs = stats[project]
+            message += "## "+project+'\n'
+            for pr_no in list(prs.keys()):
+                message +=  "["+str(pr_no)+"] **"+prs[pr_no]['title']+"**\n"
+                message += '**' + prs[pr_no]['state'] + '** Created at: '+ prs[pr_no]['created_at']+'\n' 
+                message += "**Labels: **"
+                message += ', '.join(['_'+lb+'_' for lb in prs[pr_no]['labels']])
+                message += "\n**Reviewers: **"
+                message += ', '.join(['_'+rr+'_' for rr in prs[pr_no]['requested_reviewers']])
+                message += '\n\n'
+            self.channel.add_post(self.report_channel_id, message, self.headers)
+            message = ""
     def post_workflow(self):
         pass
-    
-    def post_productivity(self):
-        pass
-    
 
 if __name__ == "__main__":
     bot = BrolyBot(team_id = "satzcatq1prftgtfz6c9m5x9my", token = config.BOT_API_KEY)
+    
     report = bot.get_report('mattermost', ['mattermost-mobile'])
     bot.post_report(report)
     
@@ -91,3 +106,6 @@ if __name__ == "__main__":
     
     horo = bot.get_social('horo', {})
     bot.post_social('horo', horo )
+    
+    pr_stats = bot.get_pr_stats('mattermost', ['mattermost-mobile'])
+    bot.post_productivity(pr_stats)
