@@ -3,7 +3,7 @@ from flask import Flask, render_template, send_file, Response
 from flask_bootstrap import Bootstrap
 import shlex, subprocess
 
-command_line = "python Broly.py"
+command_line = "python Cron.py"
 args = shlex.split(command_line)
 p = subprocess.Popen(args)
 
