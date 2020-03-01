@@ -1,0 +1,43 @@
+{
+  "name": "BigCommerce Sample App, Python",
+  "description": "Sample app for the BigCommerce app store. Handles installation flow and runs an API request, uses the response data to render an interface.",
+  "keywords": [
+    "bigcommerce",
+    "ecommerce",
+    "python",
+    "flask"
+  ],
+  "repository": "https://github.com/MuLx10/Broly",
+  "logo": "https://www.netclipart.com/pp/m/304-3040600_broccoli-png-broccoli-clipart-black-and-white.png",
+  "success_url": "/instructions",
+  "scripts": {
+    "postdeploy": ""
+  },
+  "env": {
+    "GH_API_KEY": {
+      "description": "Github Developer API key",
+      "value": "GH_API_KEY"
+    },
+    "REDDIT_API_CLIENT_ID": {
+      "description": "Replace this with the Reddit Client ID",
+      "value": "Client ID"
+    },
+    "REDDIT_API_CLIENT_SECRET": {
+      "description": "Replace this with the Reddit Client Secret",
+      "value": "Client Secret"
+    },
+    "BOT_API_KEY": {
+      "description": "Replace this with the Bot Account access token",
+      "value": "Bot Account access token"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "image": "heroku/python",
+  "addons": [
+  ]
+}
