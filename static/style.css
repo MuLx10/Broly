@@ -1,0 +1,288 @@
+.beaver {
+  -webkit-box-align: center;
+          align-items: center;
+  background-image: radial-gradient(ellipse farthest-corner, #996a3e 0%, #825d3a);
+  box-shadow: inset 0.4rem -0.4rem 0.3rem 0.2rem #6c5035;
+  border-radius: 80% / 70% 68% 40% 40%;
+  bottom: -2rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  height: 30rem;
+  left: 0;
+  position: absolute;
+  -webkit-transform: rotateZ(45deg) translateZ(3rem);
+          transform: rotateZ(45deg) translateZ(3rem);
+  width: 22rem;
+}
+.beaver .eyes .left, .beaver .eyes .right {
+  -webkit-animation: 10s 3s infinite blink;
+          animation: 10s 3s infinite blink;
+  background-color: #282828;
+  border-radius: 100%;
+  height: 100%;
+  position: absolute;
+  width: 1rem;
+}
+.beaver .eyes .left::before, .beaver .eyes .right::before {
+  background-color: rgba(238, 238, 238, 0.8);
+  border-radius: 100%;
+  height: 30%;
+  right: 20%;
+  top: 15%;
+  width: 30%;
+}
+.beaver .eyes {
+  display: -webkit-box;
+  display: flex;
+  margin: 1rem auto;
+  height: 1.4rem;
+  overflow: hidden;
+  top: 20%;
+  width: 40%;
+}
+.beaver .eyes .right {
+  right: 0;
+}
+.beaver .nose {
+  background-color: #504e59;
+  border-radius: 18rem 18rem 15rem 15rem / 16rem 16rem 20rem 20rem;
+  box-shadow: inset 0 -0.2rem 0.4rem 0.4rem #3e3c48;
+  display: -webkit-box;
+  display: flex;
+  height: 14%;
+  overflow: hidden;
+  top: 20%;
+  width: 24%;
+  z-index: 10;
+}
+.beaver .nose .left, .beaver .nose .right {
+  height: 100%;
+  width: 50%;
+}
+.beaver .nose .left::before, .beaver .nose .right::before {
+  background-color: #3e3c48;
+  border: 0.2rem solid #3e3c48;
+  border-radius: 100%;
+  bottom: 5%;
+  box-shadow: inset 0 0 1rem 0.1rem rgba(40, 40, 40, 0.6);
+  height: 70%;
+  width: 100%;
+}
+.beaver .nose .left::before {
+  left: -55%;
+  -webkit-transform: rotateZ(-25deg);
+          transform: rotateZ(-25deg);
+}
+.beaver .nose .right::before {
+  right: -55%;
+  -webkit-transform: rotateZ(25deg);
+          transform: rotateZ(25deg);
+}
+.beaver .mouth {
+  -webkit-box-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  height: 40%;
+  top: 1.4rem;
+  width: 60%;
+  z-index: 8;
+}
+.beaver .mouth::before {
+  /* jaws separator line */
+  background-color: #996a3e;
+  top: calc(40% - 1rem);
+  height: 2rem;
+  left: calc(50% - .2rem);
+  width: .4rem;
+  z-index: 9;
+}
+.beaver .mouth .jaws .left, .beaver .mouth .jaws .right {
+  height: 100%;
+  overflow: hidden;
+  top: 100%;
+  width: calc(50% - .2rem);
+  z-index: 9;
+}
+.beaver .mouth .jaws .left::after, .beaver .mouth .jaws .right::after {
+  background-color: #ead6aa;
+  border-radius: 50% 100%;
+  box-shadow: inset 0.4rem -0.4rem 0.3rem 0.2rem #d7c59d;
+  height: 100%;
+  top: -50%;
+  -webkit-transform: rotateZ(-30deg);
+          transform: rotateZ(-30deg);
+  width: 100%;
+}
+.beaver .mouth .jaws {
+  background-color: #ead6aa;
+  border-radius: 50%  50% 0 0;
+  box-shadow: inset 0.2rem 0.4rem 0.8rem 0.1rem #d7c59d;
+  display: -webkit-box;
+  display: flex;
+  height: 45%;
+  width: 100%;
+}
+.beaver .mouth .jaws .right {
+  right: -.4rem;
+}
+.beaver .mouth .incisors {
+  display: -webkit-box;
+  display: flex;
+  height: 40%;
+  width: 30%;
+}
+.beaver .mouth .incisors .left, .beaver .mouth .incisors .right {
+  background-color: #eee;
+  border: 0.2rem solid #dadada;
+  border-top-width: 0;
+  height: 100%;
+  width: 50%;
+}
+.beaver .mouth .incisors .left {
+  border-right-width: 0;
+  -webkit-transform: skew(10deg);
+          transform: skew(10deg);
+}
+.beaver .mouth .incisors .right {
+  border-left-width: 0;
+  -webkit-transform: skew(-10deg);
+          transform: skew(-10deg);
+}
+.beaver .whiskers {
+  display: -webkit-box;
+  display: flex;
+  height: 20%;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  top: -16%;
+  width: 95%;
+  z-index: 10;
+}
+.beaver .whiskers .left, .beaver .whiskers .left::after, .beaver .whiskers .left::before, .beaver .whiskers .right, .beaver .whiskers .right::after, .beaver .whiskers .right::before {
+  border-bottom: .25rem solid transparent;
+  border-right: 6rem solid #eee;
+  border-top: .2rem solid transparent;
+  height: 0;
+  -webkit-transform: rotateZ(-20deg);
+          transform: rotateZ(-20deg);
+  width: 0;
+}
+.beaver .whiskers .left::after {
+  -webkit-transform: rotateZ(10deg) translateY(-1.4rem);
+          transform: rotateZ(10deg) translateY(-1.4rem);
+}
+.beaver .whiskers .left::before {
+  -webkit-transform: rotateZ(-10deg) translateY(1rem);
+          transform: rotateZ(-10deg) translateY(1rem);
+}
+.beaver .whiskers .right {
+  -webkit-transform: rotateZ(200deg);
+          transform: rotateZ(200deg);
+}
+.beaver .whiskers .right::after {
+  -webkit-transform: rotateZ(10deg) translateY(-1.4rem);
+          transform: rotateZ(10deg) translateY(-1.4rem);
+}
+.beaver .whiskers .right::before {
+  -webkit-transform: rotateZ(-10deg) translateY(1rem);
+          transform: rotateZ(-10deg) translateY(1rem);
+}
+.beaver .bowtie {
+  background-color: #ef2535;
+  border-radius: 20%;
+  box-shadow: inset 0.1rem -0.2rem 0.6rem 0.2rem #c72632;
+  display: -webkit-box;
+  display: flex;
+  height: 4%;
+  top: -15%;
+  width: 8%;
+}
+.beaver .bowtie .left, .beaver .bowtie .right {
+  background-color: #ef2535;
+  box-shadow: inset 0.1rem -0.2rem 0.6rem 0.2rem #c72632;
+  height: 200%;
+  position: absolute;
+  top: -50%;
+  width: 100%;
+}
+.beaver .bowtie .left {
+  border-radius: 20% 70% 70% 20% / 50% 40% 50%;
+  left: -90%;
+}
+.beaver .bowtie .right {
+  border-radius: 70% 20% 20% 70% / 50% 40% 50%;
+  right: -90%;
+}
+
+.tail {
+  -webkit-animation: 5s infinite tail-wave;
+          animation: 5s infinite tail-wave;
+  background-image: radial-gradient(ellipse farthest-corner, #825d3a 0%, #614933);
+  box-shadow: inset 0.1rem -0.4rem 0.3rem 0.4rem #6c5035;
+  border-radius: 80% / 70% 68% 40% 40%;
+  bottom: -4rem;
+  height: 30rem;
+  left: -7rem;
+  position: absolute;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  width: calc(22rem * .6);
+  z-index: -1;
+}
+
+/* Animation */
+@-webkit-keyframes tail-wave {
+  50% {
+    -webkit-transform: rotateZ(55deg);
+            transform: rotateZ(55deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(45deg);
+            transform: rotateZ(45deg);
+  }
+}
+@keyframes tail-wave {
+  50% {
+    -webkit-transform: rotateZ(55deg);
+            transform: rotateZ(55deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(45deg);
+            transform: rotateZ(45deg);
+  }
+}
+@-webkit-keyframes blink {
+  /* eye blinking */
+  3% {
+    height: .05rem;
+    -webkit-transform: translateY(0.7rem);
+            transform: translateY(0.7rem);
+  }
+  7% {
+    height: 1.4rem;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes blink {
+  /* eye blinking */
+  3% {
+    height: .05rem;
+    -webkit-transform: translateY(0.7rem);
+            transform: translateY(0.7rem);
+  }
+  7% {
+    height: 1.4rem;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}

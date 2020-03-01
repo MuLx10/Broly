@@ -1,1 +1,1 @@
-python Cron.py
+python app.py
