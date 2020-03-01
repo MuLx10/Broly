@@ -7,7 +7,7 @@
     "python",
     "flask"
   ],
-  "repository": "https://github.com/MuLx10/Broly",
+  "repository": "https://github.com/MuLx10/Broly.git",
   "logo": "https://www.netclipart.com/pp/m/304-3040600_broccoli-png-broccoli-clipart-black-and-white.png",
   "success_url": "/instructions",
   "scripts": {
