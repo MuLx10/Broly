@@ -61,13 +61,23 @@ ORG_NAME = 'mattermost' # Organization name on Github eg. 'mattermost'
 PROJECTS = ['mattermost-mobile'] # list conatining projects eg. ['mattermost-mobile']
 ```
 
+### Requirements & Installation
+
+* Python v3
+* Mattermost v4
+
+Other requirements
+```bash
+$ pip install -r requirements.txt
+```
+
 ## Run
 
 ```bash
 $ python app.py
 ```
 
-### Usage
+## Usage
 
 Broly has two parts.
 - Cron Job : Scheduled jobs which are performed on a fixed time interval
@@ -84,8 +94,10 @@ Broly has two parts.
   - Horoscope: horoscope
   
   
-  ### Screenshots
-  
-  
+## Screenshots
 
-
+![meme](https://user-images.githubusercontent.com/23444642/75647445-ff736080-5c72-11ea-865f-483d4d597c51.gif)
+![pr](https://user-images.githubusercontent.com/23444642/75647617-87596a80-5c73-11ea-9c55-7fa8504307b5.gif)
+![horo](https://user-images.githubusercontent.com/23444642/75647622-89bbc480-5c73-11ea-83a8-7b1ee776d830.gif)
+![tod](https://user-images.githubusercontent.com/23444642/75647561-54af7200-5c73-11ea-853d-e2667e33d6b7.gif)
+![report](https://user-images.githubusercontent.com/23444642/75647563-56793580-5c73-11ea-8451-6fd012feef11.gif)
