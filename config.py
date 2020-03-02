@@ -1,17 +1,20 @@
 import os, sys
 
+# Github API
 GH_API_KEY = os.getenv('GH_API_KEY', '')
-REDDIT_API_CLIENT_ID = os.getenv('REDDIT_API_CLIENT_ID', '')
+
+ # Reddit API
+REDDIT_API_CLIENT_ID = os.getenv('REDDIT_API_CLIENT_ID', '') 
 REDDIT_API_CLIENT_SECRET = os.getenv('REDDIT_API_CLIENT_SECRET', '')
 REDDIT_API_USER_AGENT = "Meme collector"
 
-BOT_API_KEY = os.getenv('BOT_API_KEY', '')
-ADMIN_API_KEY = os.getenv('ADMIN_API_KEY', '')
+BOT_API_KEY = os.getenv('BOT_API_KEY', '') # Mattermost Broly bot access token
+ADMIN_API_KEY = os.getenv('ADMIN_API_KEY', '') # Mattermost Admin access token needed to get team ids (described below)
 
-TEAM_ID = "satzcatq1prftgtfz6c9m5x9my"
-MATTERMOST_URL = "https://brolee.herokuapp.com"
-ORG_NAME = 'mattermost'
-PROJECTS = ['mattermost-mobile']
+TEAM_ID = ""
+MATTERMOST_URL = "https://mm-broly.herokuapp.com" # Mattermost url
+ORG_NAME = 'mattermost' # Organization name on Github eg. 'mattermost'
+PROJECTS = ['mattermost-mobile'] # list conatining projects eg. ['mattermost-mobile']
 
 
 
