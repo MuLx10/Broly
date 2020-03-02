@@ -12,11 +12,11 @@ import Productivity.Productivity
 
 class BrolyBot(object):
     """docstring for BrolyBot"""
-    def __init__(self, team_id, token = config.BOT_API_KEY):
+    def __init__(self, team_id, token = config.BOT_API_KEY, post = True):
         super(BrolyBot, self).__init__() 
         self.team_id = team_id
         self.headers = {"Authorization": "Bearer {token:s}".format(token=token)} 
-        
+        self.post = post
         
         self.channel = Channel.Channel(self.team_id)
         channels = self.channel.get_list()
@@ -57,11 +57,15 @@ class BrolyBot(object):
             message += '\n'
         print(message)
         #print(report)
-        self.channel.add_post(self.report_channel_id, message, self.headers)
+        if self.post:
+            self.channel.add_post(self.report_channel_id, message, self.headers)
+        return message
     
     def post_social(self, type, contents):
         (image_urls, image_titles, image_ids) = contents
         print(contents)
+        message = ''
+        return_message = message
         for url, title, _ in zip(image_urls, image_titles, image_ids):
             message = ''
             if type == 'tod':
@@ -73,11 +77,14 @@ class BrolyBot(object):
                 message += "![img]("+url+")\n"
             message += '\n'
             print(message)
-            self.channel.add_post(self.social_channel_id, message, self.headers)
+            return_message += message+'\n'
+            if self.post:
+                self.channel.add_post(self.social_channel_id, message, self.headers)
+        return return_message
     
     def post_productivity(self, stats):
         message = "# PR Status\n"
-       
+        return_message = message
         for project in list(stats.keys()):
             prs = stats[project]
             message += "## "+project+'\n'
@@ -90,8 +97,12 @@ class BrolyBot(object):
                 message += ', '.join(['_'+rr+'_' for rr in prs[pr_no]['requested_reviewers']])
                 message += '\n\n'
             print(message)
-            self.channel.add_post(self.report_channel_id, message, self.headers)
+            return_message += message+'\n'
+            if self.post:
+                self.channel.add_post(self.report_channel_id, message, self.headers)
             message = ""
+        return return_message
+        
     def post_workflow(self):
         pass
 

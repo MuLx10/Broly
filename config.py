@@ -10,3 +10,5 @@ ADMIN_API_KEY = os.getenv('ADMIN_API_KEY')
 
 TEAM_ID = "satzcatq1prftgtfz6c9m5x9my"
 MATTERMOST_URL = "https://brolee.herokuapp.com"
+ORG_NAME = 'mattermost'
+PROJECTS = ['mattermost-mobile']

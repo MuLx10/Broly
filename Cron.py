@@ -4,8 +4,8 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 print("Starting schedulers")
 
-org_name = 'mattermost'
-projects = ['mattermost-mobile']
+org_name = config.ORG_NAME
+projects = config.PROJECTS
 
 bot = BrolyBot(team_id = config.TEAM_ID, token = config.BOT_API_KEY)
 
