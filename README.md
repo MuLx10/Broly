@@ -77,11 +77,15 @@ Broly has two parts.
   - Gather status of PR on daily basis
   - Daily Horoscope
 - Chatbot : The above things can also be request at will
- - Meme: Broly share a meme
- - Thought of the day: Give me a tod
- - Report: Show contribution report
- - PR status: pr status
- - Horoscope: horoscope
+  - Meme: Broly share a meme
+  - Thought of the day: Give me a tod
+  - Report: Show contribution report
+  - PR status: pr status
+  - Horoscope: horoscope
+  
+  
+  ### Screenshots
+  
   
 
 
