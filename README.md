@@ -11,12 +11,14 @@ Follow steps 1->2->3
 
 ### Create a bot
 
-Enable Bot Accounts
+**Enable Bot Accounts**
 ![](https://github.com/MuLx10/Broly/raw/master/images/bot_acc.png)
 
-Create Bots
+
+**Create Bots**
 ![](https://github.com/MuLx10/Broly/raw/master/images/new_bot1.png)
 ![](https://github.com/MuLx10/Broly/raw/master/images/new_bot2.png)
+
 
 Note the Bot access token, It is needed as API Key for commandline
 ![](https://github.com/MuLx10/Broly/raw/master/images/bot_token.png)
@@ -101,3 +103,8 @@ Broly has two parts.
 ![horo](https://user-images.githubusercontent.com/23444642/75647622-89bbc480-5c73-11ea-83a8-7b1ee776d830.gif)
 ![tod](https://user-images.githubusercontent.com/23444642/75647561-54af7200-5c73-11ea-853d-e2667e33d6b7.gif)
 ![report](https://user-images.githubusercontent.com/23444642/75647563-56793580-5c73-11ea-8451-6fd012feef11.gif)
+
+
+If you want API keys conatct Me [mehulkumarnirala@gmail.com](mehulkumarnirala@gmail.com)
+
+Hope you had a nice time :smile:
