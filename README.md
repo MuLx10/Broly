@@ -11,20 +11,24 @@ An all in one bot for the communication, management, fun, productivity of the de
 
 Go to System Console -> Integration Management
 Follow steps 1->2->3
+
 ![](https://github.com/MuLx10/Broly/raw/master/images/access_token.png)
 
 ### Create a bot
 
 **Enable Bot Accounts**
+
 ![](https://github.com/MuLx10/Broly/raw/master/images/bot_acc.png)
 
 
 **Create Bots**
+
 ![](https://github.com/MuLx10/Broly/raw/master/images/new_bot1.png)
 ![](https://github.com/MuLx10/Broly/raw/master/images/new_bot2.png)
 
 
-Note the Bot access token, It is needed as API Key for commandline
+Note the Bot access token, It is needed as API Key for command line
+
 ![](https://github.com/MuLx10/Broly/raw/master/images/bot_token.png)
 
 ### Editing [config](config.py) file
@@ -86,22 +90,21 @@ $ python app.py
 ## Usage
 
 Broly has two parts.
-- Cron Job : Scheduled jobs which are performed on a fixed time interval
-  - Start with a intriguing thought of the day
+- Cron Job: Scheduled jobs which are performed on a fixed time interval
+  - Start with an intriguing thought of the day
   - Prepare and post Weekly report
   - Present a daily dose of memes
-  - Gather status of PR on daily basis
+  - Gather the status of PR on a daily basis
   - Daily Horoscope
-- Chatbot : The above things can also be request at will
+- Chatbot: The above things can also be requested at will
   - Meme: Broly share a meme
   - Thought of the day: Give me a tod
-  - Report: Show contribution report
+  - Report: Show the contribution report
   - PR status: pr status
   - Horoscope: horoscope
   
+  
 ## Screenshots
-
-[Demo](https://drive.google.com/drive/folders/1oaQnBk69rCIIy1YIyqlb2JTx2EA9sRi-)
 
 ![meme](https://user-images.githubusercontent.com/23444642/75647445-ff736080-5c72-11ea-865f-483d4d597c51.gif)
 ![pr](https://user-images.githubusercontent.com/23444642/75647617-87596a80-5c73-11ea-9c55-7fa8504307b5.gif)
@@ -110,9 +113,8 @@ Broly has two parts.
 ![report](https://user-images.githubusercontent.com/23444642/75647563-56793580-5c73-11ea-8451-6fd012feef11.gif)
 
 
-If you want API keys conatct Me [mehulkumarnirala@gmail.com](mehulkumarnirala@gmail.com)
+If you want API keys contact Me [mehulkumarnirala@gmail.com](mehulkumarnirala@gmail.com)
 
 Hope you had a nice time :smile:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
