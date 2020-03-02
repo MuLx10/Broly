@@ -5,8 +5,20 @@
 
 ### Enable Access Token
 
+Follow steps 1->2->3
+![](https://github.com/MuLx10/Broly/raw/master/images/access_token.png)
+
 ### Create a bot
 
+Enable Bot Accounts
+![](https://github.com/MuLx10/Broly/raw/master/images/bot_acc.png)
+
+Create Bots
+![](https://github.com/MuLx10/Broly/raw/master/images/new_bot1.png)
+![](https://github.com/MuLx10/Broly/raw/master/images/new_bot2.png)
+
+Note the Bot access token, It is needed as API Key for commandline
+![](https://github.com/MuLx10/Broly/raw/master/images/bot_token.png)
 
 ### Editing [config](config.py) file
 
