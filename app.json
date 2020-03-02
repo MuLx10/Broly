@@ -30,6 +30,10 @@
       "description": "Replace this with the Bot Account access token",
       "value": "Bot Account access token"
     }
+    "ADMIN_API_KEY": {
+      "description": "Replace this with the Bot Account access token",
+      "value": "Bot Account access token"
+    }
   },
   "formation": {
     "web": {
