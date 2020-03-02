@@ -1,6 +1,10 @@
 # Broly
+An all in one bot for the communication, management, fun, productivity of the developers participating in a project.
+* Deployment of builds & automating response management
+* Tracking pull requests, build results & logs.
+* Weekly report appreciating the significant contributions.
+* Extracting memes, thought of the day, horoscope etc.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Setup
 ### Enable Access Token
@@ -108,3 +112,6 @@ Broly has two parts.
 If you want API keys conatct Me [mehulkumarnirala@gmail.com](mehulkumarnirala@gmail.com)
 
 Hope you had a nice time :smile:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
